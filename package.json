@@ -1,20 +1,31 @@
 {
-  "dependencies": {
-    "express": "^4.17.1",
-    "morgan": "^1.10.0"
-  },
-  "name": "part3a-exercise",
+  "name": "fullstack-open-2020-part3",
   "version": "1.0.0",
+  "description": "fullstack open course 2020 part 3",
   "main": "index.js",
   "scripts": {
+    "build:ui": "rm -rf build && cd ../fullstack-open-2020/part3/frontend && npm run build --prod && cp -r build ../../../fullstack-open-2020-part3",
+    "deploy": "git push heroku master",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",
+    "logs:prod": "heroku logs --tail",
     "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
-  "author": "",
+  "author": "Mayuri",
   "license": "ISC",
-  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.27",
+    "mongoose-unique-validator": "^2.0.3",
+    "morgan": "^1.10.0"
+  },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "eslint": "^7.6.0",
+    "nodemon": "^2.0.4"
   }
 }
